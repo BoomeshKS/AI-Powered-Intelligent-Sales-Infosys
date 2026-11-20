@@ -1,0 +1,51 @@
+
+POST /api/leads/
+
+{
+    "company_name": "TechCorp Solutions",
+    "industry": "Software",
+    "contact_person": "Sarah Johnson",
+    "email": "sarah@example.com",
+    "website": "https://example.com",
+    "employee_count": "250-500",
+    "location": "California",
+    "description": "Enterprise software development company",
+    "technology_stack": "AWS, Python, React",
+    "status": "New"
+}
+
+
+POST /api/scoring/predict/1
+
+{
+    "company_growth": 23,
+    "industry_match": 24,
+    "technology_alignment": 18,
+    "business_need": 19,
+    "engagement_level": 8
+}
+
+
+
+POST /api/outreach/generate/1
+
+{
+    "tone": "professional",
+    "service_offered": "Cloud optimization and AI automation",
+    "additional_context": "Invite the prospect for an introductory meeting."
+}
+
+
+POST /api/outreach/recommend/1
+
+
+{
+    "lead_id": 1,
+    "channel": "Email",
+    "follow_up_timing": "Within 48 hours",
+    "strategy": "Highlight cloud optimization services",
+    "next_action": "Send a personalized introductory email"
+}
+
+
+GET /api/outreach/1

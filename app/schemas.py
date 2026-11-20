@@ -10,6 +10,99 @@ from pydantic import (
 )
 
 
+class EmailGenerationRequest(BaseModel):
+
+    tone: str = "professional"
+
+    service_offered: str = (
+        "Software development and technology solutions"
+    )
+
+    additional_context: Optional[str] = None
+
+
+class EmailOut(BaseModel):
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+
+    lead_id: int
+
+    recipient: str
+
+    subject: str
+
+    body: str
+
+    tone: str
+
+    created_at: datetime
+
+
+class ScoreRequest(BaseModel):
+
+    company_growth: int = Field(ge=0, le=10)
+
+    industry_match: int = Field(ge=0, le=10)
+
+    technology_alignment: int = Field(ge=0, le=10)
+
+    business_need: int = Field(ge=0, le=10)
+
+    engagement_level: int = Field(ge=0, le=10)
+
+
+
+class ScoreOut(BaseModel):
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+
+    lead_id: int
+
+    company_growth: int
+
+    industry_match: int
+
+    technology_alignment: int
+
+    business_need: int
+
+    engagement_level: int
+
+    total_score: int
+
+    priority: str
+
+    conversation_probability: Optional[float]
+
+    probability_source: Optional[str]
+
+    created_at: datetime
+
+
+class RecommendationOut(BaseModel):
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+
+    lead_id: int
+
+    channel: str
+
+    follow_up_timing: str
+
+    strategy: str
+
+    next_action: str
+
+    created_at: datetime
+
+
+
 class LeadCreate(BaseModel):
 
     company_name: str = Field(min_length=1, max_length=200)
